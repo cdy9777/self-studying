@@ -4,6 +4,7 @@ class Node:
         self.parent = parent
         self.left = left
         self.right = right
+        self.height = 0
 
     def __str__(self):
         return str(self.key)
@@ -59,12 +60,13 @@ class BST:
             m = a  # Left sub tree 에서 가장 큰 Node
             while m.right:
                 m = m.right
+            m.right = b
             if b != None:
                 b.parent = m
-                m.right = b
+            s = m
         else:
             c = b
-
+            s = pt
         if pt == None:
             self.root = c
             if c:
@@ -77,3 +79,4 @@ class BST:
                 else:
                     pt.left = c
         self.size -= 1
+        return s
